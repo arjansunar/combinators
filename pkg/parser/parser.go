@@ -25,6 +25,6 @@ func Term(t []rune) Func[string] {
 }
 
 // Digit
-// Map
+
 // OneOf
 // Sequence

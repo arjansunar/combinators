@@ -38,3 +38,16 @@ func Err[T any](err *Error, input []rune, idx int) ParserState[T] {
 		Index:     idx,
 	}
 }
+
+func (p *ParserState[T]) Map(fn func(T) T) {
+	p.Payload = fn(p.Payload)
+}
+
+func Map[T any, R any](p ParserState[T], fn func(T) R) ParserState[R] {
+	return ParserState[R]{
+		Payload:   fn(p.Payload),
+		Err:       p.Err,
+		Remaining: p.Remaining,
+		Index:     p.Index,
+	}
+}
