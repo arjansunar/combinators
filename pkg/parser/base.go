@@ -31,7 +31,7 @@ func Success[T any](payload T, remaining []rune, idx int) ParserState[T] {
 	}
 }
 
-func Err[T any](err *Error, input []rune, idx int) ParserState[T] {
+func Fail[T any](err *Error, input []rune, idx int) ParserState[T] {
 	return ParserState[T]{
 		Err:       err,
 		Remaining: input,

@@ -10,17 +10,16 @@ func Expect[T comparable](t *testing.T, left T, right T) {
 
 func TestChar(t *testing.T) {
 	c := Char('$')
-	res := c([]rune("testing"), 0)
-	res = c([]rune("$testing"), 0)
+	res := c([]rune("$testing"), 0)
 	Expect(t, res.Payload, "$")
 }
 
 func TestTerm(t *testing.T) {
 	// add in sub test
 	t.Run("Match in single string", func(t *testing.T) {
-		tt := Term([]rune("test"))
-		res := tt([]rune("testing"), 0)
-		Expect(t, res.Payload, "test")
+		tt := Term([]rune("let"))
+		res := tt([]rune("let x = 0"), 0)
+		Expect(t, res.Payload, "let")
 	})
 
 	t.Run("Match in multi string", func(t *testing.T) {
